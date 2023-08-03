@@ -1,1 +1,1 @@
-# 榫卯 - 中后台前端技术体系
+# AI api - a collection of simple api wrapper for LLMs, AppPlatforms and Chains
