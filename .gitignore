@@ -1,0 +1,47 @@
+.DS_Store
+node_modules
+# should ignore Talos outputDir
+build
+doc
+coverage
+dist
+doc
+.rome
+.jscpd
+.best
+.doctor
+webpack.js
+webpack.*.js
+*.ts.svg
+*.vue.svg
+
+# should ignore soa
+packages/shared/src/composables/soa
+
+# should ignore vuepress template buildfiles
+packages/docs/.history
+
+# local env files
+.env.local
+.env.*.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+\#*\#
+\.\#*
+\#*
+
+.history
+packages/**/.history
