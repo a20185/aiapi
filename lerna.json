@@ -1,0 +1,14 @@
+{
+  "packages": [
+    "packages/llm/*",
+    "packages/chain/*",
+    "packages/app/*",
+    "packages/shared"
+  ],
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "version": "independent",
+  "command": {
+    "bootstrap": {}
+  }
+}

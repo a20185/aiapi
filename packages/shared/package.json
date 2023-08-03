@@ -1,0 +1,30 @@
+{
+  "name": "@aiapi/shared",
+  "license": "MIT",
+  "author": "Souler Ou(ou@souler.cc)",
+  "version": "0.0.1",
+  "description": "⚙ Shared utils for aiapi",
+  "main": "dist/index.common.js",
+  "module": "dist/index.esm.js",
+  "types": "types/index.d.ts",
+  "scripts": {
+    "test": "echo 'No test!'",
+    "build": "rm -rf ./dist && rollup -c rollup.config.js && node ./copy-target.js",
+    "build:watch": "rollup -c rollup.config.js -w",
+    "checkout": "yarn bfcheckout",
+    "switch": "yarn bfswitch"
+  },
+  "keywords": [],
+  "dependencies": {},
+  "devDependencies": {},
+  "config": {
+    "changelog": "初版可用脚本",
+    "enchangelog": "First usable script",
+    "commitizen": {
+      "path": "./node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": "../../.cz-configrc.js"
+    }
+  }
+}

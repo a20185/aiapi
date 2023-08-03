@@ -1,0 +1,79 @@
+{
+  "name": "aiapi",
+  "private": true,
+  "description": "simple and neat AI api calling in seconds",
+  "scripts": {
+    "install": "lerna bootstrap --use-workspaces",
+    "reinstall": "lerna clean && yarn install",
+    "build": "yarn build:docs",
+    "build:all": "lerna run --parallel build",
+    "commit": "git cz",
+    "brverify": "yarn bfverify",
+    "checkout": "yarn bfcheckout",
+    "switch": "yarn bfswitch",
+    "clean": "lerna clean",
+    "test": "lerna run --parallel test",
+    "lint-staged": "lerna run --parallel lint-staged",
+    "lint": "lerna run --parallel lint -- --no-fix",
+    "lint:fix": "lerna run --parallel lint",
+    "lint:style": "lerna run --parallel lint:style -- --no-fix",
+    "lint:style:fix": "lerna run --parallel lint:style"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/llm/*",
+      "packages/chain/*",
+      "packages/app/*",
+      "packages/shared"
+    ]
+  },
+  "resolutions": {
+    "lodash": "4.17.15"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "4.27.0",
+    "@typescript-eslint/parser": "4.27.0",
+    "chalk": "4.1.0",
+    "download-git-repo": "3.0.2",
+    "eslint": "6.7.2",
+    "eslint-define-config": "1.0.7",
+    "eslint-find-rules": "3.6.1",
+    "eslint-plugin-prettier": "3.3.1",
+    "eslint-plugin-tsdoc": "0.2.11",
+    "lerna": "3.22.1",
+    "prettier": "2.3.2",
+    "replace-in-file": "6.1.0",
+    "replace-in-files": "3.0.0",
+    "typedoc": "0.21.0",
+    "typedoc-plugin-markdown": "3.5.0",
+    "typescript": "4.3.2",
+    "yorkie": "2.0.0"
+  },
+  "prettier": "@nibfe/prettier-config",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": ".cz-configrc.js"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,vue,ts,tsx}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.{vue,htm,html,css,sss,less,scss}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.md": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "gitHooks": {
+    "pre-commit": "yarn brverify && yarn run lint-staged",
+    "commit-msg": "commitlint -e $GIT_PARAMS"
+  }
+}
