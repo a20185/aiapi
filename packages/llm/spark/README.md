@@ -1,6 +1,6 @@
-# AIAPI - Minimax LLM client
+# AIAPI - XunfeiSpark LLM client
 
-This documentation provides an overview of the Minimax service and its available functions. The Minimax service offers various functionalities for interacting with the Minimax's abab large model.
+This documentation provides an overview of the Xunfei Spark service and its available functions. The Xunfei Spark service offers various functionalities for interacting with the Xunfei's Spark LLM(V1.5 / V2.0). Below are the details of each function:
 
 
 ## Why aiapi?
@@ -10,164 +10,104 @@ aiapi provide the minimum implementation for the LLM/App api, you can easily use
 ## Installation
 ```shell
 # installation via npm
-npm install @aiapi/minimax --save
+npm install @aiapi/spark --save
 
 # installation via yarn
-yarn add @aiapi/minimax --save
+yarn add @aiapi/spark --save
 
 # installation via pnpm
-pnpm install @aiapi/minimax --save
+pnpm install @aiapi/spark --save
 ```
 
 
-## API List
-- [Simple Minimax Invocation](#simple-minimax-invocation)
-- [Simple Minimax Invocation (Pro Version)](#simple-minimax-invocation-pro-version)
-- [Minimax Template Invocation](#minimax-template-invocation)
-- [Minimax Template Invocation (Pro Version)](#minimax-template-invocation-pro-version)
-- Directly use Minimax service
+## Table of Contents
+- [Simple Xunfei Spark Invocation](#simple-xunfei-spark-invocation)
+- [Xunfei Spark Template Invocation](#xunfei-spark-template-invocation)
+- Directly use XunfeiSpark service
 
 
-## Simple Minimax Invocation
+## Simple Xunfei Spark Invocation
 
-Calls the Minimax's abab large model service based on the given prompt and appKey.
-
+Calls the Xunfei's Spark large model service based on the given prompt and appKey.
 
 ### Usage
 
 ```typescript
-import { simpleCallMinimax, MinimaxSimpleCallParam } from 'minimax-service'
+import { simpleCallXfSpark, XunfeiSparkSimpleCallParam } from '@aiapi/spark'
 
-const params: MinimaxSimpleCallParam = {
-    model: 'abab-5.5-chat', // optional, default: abab-5.5-chat
+const params: XunfeiSparkSimpleCallParam = {
+    model: 'xunfei-spark-2.0', // optional values: 'xunfei-spark-1.5' | 'xunfei-spark-2.0'
     content: 'Your content here',
+    appId: 'Your app ID',
     key: 'Your API key',
-    groupId: 'Your group ID'
+    secret: 'Your API secret',
+    uid: 'Your user ID', // optional
+    host: 'https://yourhost.com' // optional
 }
 
-const response: Promise<string> = simpleCallMinimax(params);
+const response: Promise<string> = simpleCallXfSpark(params);
 ```
 
 ### Parameters
 
-- `params` (MinimaxSimpleCallParam): An object containing the following parameters:
-  - `model` (string, optional): Model type, optional values 'abab-5-chat' | 'abab-5.5-chat'. Default is 'abab-5.5-chat'.
-  - `content` (string): The content for Minimax processing.
-  - `key` (string): The API key for authentication.
-  - `groupId` (string): The group ID for Minimax processing.
+- `params` (XunfeiSparkSimpleCallParam): An object containing the following parameters:
+  - `model` (string, optional): Model type, optional values: 'xunfei-spark-1.5' | 'xunfei-spark-2.0'.
+  - `content` (string): The content for Xunfei Spark processing.
+  - `appId` (string): The Xunfei app ID.
+  - `key` (string): The Xunfei API key.
+  - `secret` (string): The Xunfei API secret.
+  - `uid` (string, optional): The user ID to identify the user.
+  - `host` (string, optional): The custom host URL.
 
 ### Returns
 
 - `response` (Promise<string>): A promise that resolves to a string representing the API's response.
 
-## Simple Minimax Invocation (Pro Version)
+## Xunfei Spark Template Invocation
 
-Calls the Minimax's abab large model service based on the given prompt and appKey, interfacing with Minimax's ChatCompletionPro.
-
-### Usage
-
-```typescript
-import { simpleCallMinimaxPro, MinimaxSimpleCallParam } from 'minimax-service'
-
-const params: MinimaxSimpleCallParam = {
-    model: 'abab-5.5-chat', // optional, default: abab-5.5-chat
-    content: 'Your content here',
-    key: 'Your API key',
-    groupId: 'Your group ID'
-}
-
-const response: Promise<string> = simpleCallMinimaxPro(params);
-```
-
-### Parameters
-
-- `params` (MinimaxSimpleCallParam): An object containing the following parameters:
-  - `model` (string, optional): Model type, optional to fill. Currently, Minimax Pro only supports 'abab-5.5-chat'.
-  - `content` (string): The content for Minimax processing.
-  - `key` (string): The API key for authentication.
-  - `groupId` (string): The group ID for Minimax processing.
-
-### Returns
-
-- `response` (Promise<string>): A promise that resolves to a string representing the API's response.
-
-## Minimax Template Invocation
-
-Calls the Minimax's abab large model service based on the given template JSON, input parameters, and appKey.
+Calls the Xunfei's Spark large model service based on the given template JSON, input parameters, and appKey.
 
 ### Usage
 
 ```typescript
-import { callMinimax, MinimaxTemplateCallParam } from 'minimax-service'
+import { callXfSpark, XunfeiSparkTemplateCallParam } from '@aiapi/spark'
 
 // Example template JSON:
-const template: MinimaxTemplateCallParam = {
+const template: XunfeiSparkTemplateCallParam = {
     url: 'https://example.com/template.json',
     content: 'Your content here',
+    appId: 'Your app ID',
     key: 'Your API key',
-    groupId: 'Your group ID'
+    secret: 'Your API secret',
+    uid: 'Your user ID', // optional
+    host: 'https://yourhost.com' // optional
 }
 
 // Alternatively, you can provide the template content directly:
-// const template: MinimaxTemplateCallParam = {
+// const template: XunfeiSparkTemplateCallParam = {
 //     tpl: '{ "template": "content"}',
 //     content: 'Your content here',
+//     appId: 'Your app ID',
 //     key: 'Your API key',
-//     groupId: 'Your group ID'
+//     secret: 'Your API secret',
+//     uid: 'Your user ID', // optional
+//     host: 'https://yourhost.com' // optional
 // }
 
-const response: Promise<string> = callMinimax(template);
+const response: Promise<string> = callXfSpark(template);
 ```
 
 ### Parameters
 
-- `template` (MinimaxTemplateCallParam): An object containing the following parameters:
+- `template` (XunfeiSparkTemplateCallParam): An object containing the following parameters:
   - `url` (string): The URL of the template JSON file.
-  - `content` (string): The content for Minimax processing.
-  - `key` (string): The API key for authentication.
-  - `groupId` (string): The group ID for Minimax processing.
+  - `content` (string): The content for Xunfei Spark processing.
+  - `appId` (string): The Xunfei app ID.
+  - `key` (string): The Xunfei API key.
+  - `secret` (string): The Xunfei API secret.
+  - `uid` (string, optional): The user ID to identify the user.
+  - `host` (string, optional): The custom host URL.
 
 ### Returns
 
 - `response` (Promise<string>): A promise that resolves to a string representing the API's response.
-
-## Minimax Template Invocation (Pro Version)
-
-Calls the Minimax's abab large model service based on the given template JSON, input parameters, and appKey, interfacing with Minimax's ChatCompletionPro.
-
-### Usage
-
-```typescript
-import { callMinimaxPro, MinimaxTemplateCallParam } from 'minimax-service'
-
-// Example template JSON:
-const template: MinimaxTemplateCallParam = {
-    url: 'https://example.com/template.json',
-    content: 'Your content here',
-    key: 'Your API key',
-    groupId: 'Your group ID'
-}
-
-// Alternatively, you can provide the template content directly:
-// const template: MinimaxTemplateCallParam = {
-//     tpl: '{ "template": "content"}',
-//     content: 'Your content here',
-//     key: 'Your API key',
-//     groupId: 'Your group ID'
-// }
-
-const response: Promise<string> = callMinimaxPro(template);
-```
-
-### Parameters
-
-- `template` (MinimaxTemplateCallParam): An object containing the following parameters:
-  - `url` (string): The URL of the template JSON file.
-  - `content` (string): The content for Minimax processing.
-  - `key` (string): The API key for authentication.
-  - `groupId` (string): The group ID for Minimax processing.
-
-### Returns
-
-- `response` (Promise<string>): A promise that resolves to a string representing the API's response.
-
