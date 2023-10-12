@@ -19,7 +19,10 @@
     "dist"
   ],
   "keywords": [
-    "tslib"
+    "aiapi",
+    "ai-app",
+    "dify",
+    "llm-sdk"
   ],
   "author": "Souler Ou(ou@souler.cc)",
   "license": "MIT",

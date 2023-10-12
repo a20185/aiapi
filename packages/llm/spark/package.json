@@ -1,7 +1,7 @@
 {
-  "name": "@aiapi/minimax",
+  "name": "@aiapi/spark",
   "version": "0.0.1",
-  "description": "⚙ A simple api for minimax",
+  "description": "⚙ A simple api for xunfei spark",
   "main": "dist/index.common.js",
   "module": "dist/index.esm.js",
   "scripts": {
